@@ -1,0 +1,217 @@
+.ListHeader{
+
+    list-style-type:none;
+
+
+}
+li.Header{
+    display: inline-block;
+
+}
+
+body{
+
+    background: linear-gradient(to top, #01016c 0%, #1647dd 100%);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+
+
+}
+
+h1.title{
+    font-family: 'Cascadia Code', sans-serif;
+    font-size: 100px;
+    animation: tracking-in-expand 1s cubic-bezier(0.215, 0.610, 0.355, 1.000) both;
+
+}
+
+@keyframes tracking-in-expand {
+    0% {
+        letter-spacing: -0.5em;
+        opacity: 0;
+    }
+    40% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.Main{
+    font-family: "Protest Guerrilla", sans-serif;
+
+    font-style: normal;
+    max-width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    color:whitesmoke;
+    text-align: center;
+    align-content: center;
+
+
+}
+
+.buttonHeader{
+    font-family: "Protest Guerrilla", sans-serif;
+    width: 200px;
+    align-content: center;
+    background-color: transparent;
+    color: whitesmoke;
+    border: none;
+    font-size: 45px;
+    text-decoration: none;
+    display: inline-block;
+    border-radius: 100px;
+    transition: 0.3s;
+
+
+
+}
+
+html{
+    scroll-behavior: smooth;
+
+}
+
+.buttonHeaderBox{
+
+    border: 5px solid whitesmoke;
+    border-radius: 100px;
+    width: 200px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+    line-height:16px;
+    text-align:center;
+    letter-spacing:normal;
+    margin:auto;
+
+}
+.buttonHeader:hover{
+    transition: all 0.4s;
+    background-color: rgba(22, 71, 221, 0.45);
+}
+
+.Presantion{
+
+    margin-top: 150px;
+    display: flex;
+    align-items: stretch;
+    justify-content: center;
+
+}
+
+
+
+.TextPresantion{
+
+    font-family: "Cascadia Code", sans-serif ;
+    font-size: 20px;
+    text-align: left;
+    margin-right: 50px;
+    background-color: rgba(0, 0, 0, 0.09);
+    width: 500px;
+    border-radius: 30px ;
+
+}
+
+.Text{
+
+    margin-left: 20px;
+
+}
+
+
+.Button{
+
+    font-family: "Protest Guerrilla", sans-serif;
+
+    border: none;
+    border-radius: 30px;
+    background-color: whitesmoke;
+    width: 250px;
+    font-size: 30px;
+    margin-left: 20px;
+    transition: all 0.5s;
+}
+
+.Button:hover{
+
+    box-shadow: 0px 0px 12px 2px #000000;
+    background-color: rgba(255, 255, 255, 0.76);
+}
+
+.ImgInformatiquePresantion{
+
+    margin-left: 100px;
+    justify-content: right;
+    display: flex;
+    flex-direction: column;
+}
+.InformatiqueImg{
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 2px #000000;
+}
+
+
+.ImgMusiquePresantion{
+
+    margin-left: 100px;
+    justify-content: right;
+    background-color: rgb(1, 1, 108);
+    border-radius: 30px;
+
+
+}
+
+.MusiqueImg{
+
+    height: 500px;
+    width: 500px;
+}
+
+.ImgElectroniquePresantion{
+
+    margin-left: 100px;
+    justify-content: right;
+    display: flex;
+    flex-direction: column;
+}
+.ElectroniqueImg{
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 2px #000000;
+}
+
+.ImgVideoPresantion{
+
+    margin-left: 100px;
+    justify-content: right;
+    display: flex;
+    flex-direction: column;
+}
+.VideoImg{
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 2px #000000;
+}
+
+.ImgModPresantion{
+
+
+    margin-left: 100px;
+    justify-content: right;
+    background-color: rgb(1, 1, 108);
+    border-radius: 30px;
+
+}
+
+.ModImg{
+
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 2px #000000;
+}
