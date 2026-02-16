@@ -75,7 +75,7 @@ html{
 
 }
 
-.buttonHeaderBox{
+.HeaderBox{
 
     border: 5px solid whitesmoke;
     border-radius: 100px;
@@ -90,6 +90,7 @@ html{
     margin:auto;
 
 }
+
 .buttonHeader:hover{
     transition: all 0.4s;
     background-color: rgba(22, 71, 221, 0.45);
@@ -97,7 +98,7 @@ html{
 
 .Presantion{
 
-    margin-top: 150px;
+    margin-top: 100px;
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -136,6 +137,7 @@ html{
     font-size: 30px;
     margin-left: 20px;
     transition: all 0.5s;
+    margin-top: 20px;
 }
 
 .Button:hover{
@@ -152,7 +154,8 @@ html{
     flex-direction: column;
 }
 .InformatiqueImg{
-
+    height: 360px;
+    width: 650px;
     border-radius: 20px;
     box-shadow: 0px 0px 12px 2px #000000;
 }
@@ -165,13 +168,14 @@ html{
     background-color: rgb(1, 1, 108);
     border-radius: 30px;
 
-
 }
 
 .MusiqueImg{
 
-    height: 500px;
-    width: 500px;
+    height: 360px;
+    width: 650px;
+    border-radius: 20px;
+    box-shadow: 0px 0px 12px 2px #000000;
 }
 
 .ImgElectroniquePresantion{
@@ -182,20 +186,22 @@ html{
     flex-direction: column;
 }
 .ElectroniqueImg{
-
+    height: 360px;
+    width: 600px;
     border-radius: 20px;
     box-shadow: 0px 0px 12px 2px #000000;
 }
 
-.ImgVideoPresantion{
+.ImgMontagePresantion{
 
     margin-left: 100px;
     justify-content: right;
     display: flex;
     flex-direction: column;
 }
-.VideoImg{
-
+.MontageImg{
+    height: 360px;
+    width: 650px;
     border-radius: 20px;
     box-shadow: 0px 0px 12px 2px #000000;
 }
@@ -206,12 +212,17 @@ html{
     margin-left: 100px;
     justify-content: right;
     background-color: rgb(1, 1, 108);
-    border-radius: 30px;
+    border-radius: 30px
 
 }
 
 .ModImg{
-
+    height: 360px;
+    width: 650px;
     border-radius: 20px;
     box-shadow: 0px 0px 12px 2px #000000;
+}
+
+.basPage{
+    margin-bottom: 100px;
 }

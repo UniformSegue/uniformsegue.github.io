@@ -70,6 +70,7 @@ h1.title{
 
 }
 
+
 html{
     scroll-behavior: smooth;
 
@@ -90,6 +91,7 @@ html{
     margin:auto;
 
 }
+
 .buttonHeader:hover{
     transition: all 0.4s;
     background-color: rgba(22, 71, 221, 0.45);
@@ -205,4 +207,6 @@ html{
     margin-left: 20px;
 
 }
+
+
 
