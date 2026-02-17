@@ -80,7 +80,7 @@ html{
 
     border: 5px solid whitesmoke;
     border-radius: 100px;
-    width: 650px;
+    width: 400px;
     display: flex;
     align-items: stretch;
     justify-content: center;
@@ -160,21 +160,6 @@ html{
     background-color: rgba(255, 255, 255, 0.76);
 }
 
-.ImgSkillsPresantion{
-
-
-    margin-left: 100px;
-    justify-content: right;
-    background-color: rgb(1, 1, 108);
-    border-radius: 30px;
-
-}
-
-.SkillsImg{
-
-    height: 500px;
-    width: 500px;
-}
 
 .ImgMoiPresantion{
 
