@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Admin Local — Portfolio Son</title>
+  <style>
+    :root {
+      --bg: #0e0e10; --surface: #18181b; --border: #27272a;
+      --text: #f4f4f5; --muted: #a1a1aa; --accent: #38bdf8; --danger: #ef4444; --ok: #22c55e;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, sans-serif; padding-bottom: 60px; }
+    .topbar {
+      position: sticky; top: 0; z-index: 20; background: rgba(14,14,16,0.95);
+      border-bottom: 1px solid var(--border); padding: 14px 24px;
+      display: flex; justify-content: space-between; align-items: center; gap: 16px;
+    }
+    .tabs { display: flex; gap: 8px; }
+    .tab-btn, .btn {
+      background: var(--surface); color: var(--text); border: 1px solid var(--border);
+      padding: 8px 14px; border-radius: 6px; cursor: pointer; font-size: 0.9rem;
+    }
+    .tab-btn.active { border-color: var(--accent); color: var(--accent); }
+    .btn-primary { background: var(--accent); color: #09090b; border-color: var(--accent); font-weight: 600; }
+    .btn-danger { color: var(--danger); border-color: rgba(239,68,68,0.4); }
+    .container { max-width: 1100px; margin: 28px auto; padding: 0 24px; }
+    .panel { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 22px; margin-bottom: 20px; }
+    h2 { font-size: 1.1rem; margin-bottom: 16px; color: var(--accent); }
+    .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 14px; }
+    label { display: block; font-size: 0.82rem; color: var(--muted); margin-bottom: 5px; }
+    input[type="text"], input[type="email"], select, textarea {
+      width: 100%; background: #0e0e10; border: 1px solid var(--border); color: var(--text);
+      padding: 9px 11px; border-radius: 6px; font-size: 0.9rem; margin-bottom: 12px; font-family: inherit;
+    }
+    textarea { min-height: 92px; resize: vertical; }
+    .dropzone {
+      border: 1px dashed #3f3f46; border-radius: 6px; padding: 14px; text-align: center;
+      color: var(--muted); font-size: 0.82rem; cursor: pointer; margin-bottom: 12px; background: #121215;
+    }
+    .dropzone.dragover { border-color: var(--accent); color: var(--accent); }
+    .project-layout { display: grid; grid-template-columns: 300px 1fr; gap: 20px; align-items: start; }
+    .project-item {
+      background: #121215; border: 1px solid var(--border); border-radius: 6px; padding: 12px;
+      margin-bottom: 10px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 8px;
+    }
+    .project-item.active { border-color: var(--accent); }
+    .mini-btns { display: flex; gap: 4px; }
+    .mini-btns button { padding: 4px 8px; font-size: 0.78rem; background: var(--surface); color: var(--text); border: 1px solid var(--border); border-radius: 4px; cursor: pointer; }
+    .row-item { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+    .row-item input { margin-bottom: 0; }
+    .preview-img { max-height: 110px; border-radius: 4px; margin-bottom: 10px; border: 1px solid var(--border); display: block; }
+    .toast {
+      position: fixed; bottom: 24px; right: 24px; background: var(--ok); color: #052e16;
+      font-weight: 600; padding: 12px 18px; border-radius: 8px; display: none; z-index: 50;
+    }
+    .hidden { display: none; }
+    @media (max-width: 820px) { .project-layout { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div style="display:flex;align-items:center;gap:16px;flex-wrap:wrap;">
+      <strong>ADMIN PORTFOLIO SON</strong>
+      <div class="tabs">
+        <button class="tab-btn active" data-tab="projects">Projets</button>
+        <button class="tab-btn" data-tab="categories">Catégories</button>
+        <button class="tab-btn" data-tab="profile">Profil & Parcours</button>
+      </div>
+    </div>
+    <button id="save-all-btn" class="btn btn-primary">Enregistrer tout (data.json)</button>
+  </header>
+
+  <main class="container">
+    <!-- ONGLET PROJETS -->
+    <section id="tab-projects" class="project-layout">
+      <aside class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+          <h2 style="margin:0;">Projets</h2>
+          <button id="add-project-btn" class="btn">+ Nouveau</button>
+        </div>
+        <div id="project-list"></div>
+      </aside>
+      <div id="project-editor" class="panel"></div>
+    </section>
+
+    <!-- ONGLET CATÉGORIES PERSONNALISÉES -->
+    <section id="tab-categories" class="hidden">
+      <div class="panel">
+        <h2>Catégories personnalisées (affichées sur l'accueil et dans les filtres)</h2>
+        <div class="row-item" style="margin-bottom:18px;">
+          <input type="text" id="new-category-input" placeholder="Ex: Mixage Dub, Sound System DIY, Synthèse..." />
+          <button id="add-category-btn" class="btn btn-primary">+ Ajouter</button>
+        </div>
+        <div id="categories-editor"></div>
+      </div>
+    </section>
+
+    <!-- ONGLET PROFIL -->
+    <section id="tab-profile" class="hidden">
+      <div class="panel">
+        <h2>Identité & Contact</h2>
+        <div class="grid-2">
+          <div><label>Nom complet</label><input type="text" id="prof-name" /></div>
+          <div><label>Titre / Accroche</label><input type="text" id="prof-tagline" /></div>
+          <div><label>Email</label><input type="email" id="prof-email" /></div>
+          <div><label>GitHub</label><input type="text" id="prof-github" /></div>
+          <div><label>SoundCloud</label><input type="text" id="prof-soundcloud" /></div>
+          <div><label>YouTube</label><input type="text" id="prof-youtube" /></div>
+        </div>
+        <label>Bio courte (3 lignes max)</label>
+        <textarea id="prof-bio"></textarea>
+
+        <label>CV PDF (remplace assets/cv.pdf)</label>
+        <div class="dropzone" id="dz-cv">Glisser-déposer votre CV (.pdf) ou cliquer ici</div>
+        <div id="cv-status" style="font-size:0.82rem;color:var(--muted);"></div>
+      </div>
+
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h2 style="margin:0;">Compétences</h2>
+          <button id="add-skill-btn" class="btn">+ Catégorie</button>
+        </div>
+        <div id="skills-editor"></div>
+      </div>
+
+      <div class="panel">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px;">
+          <h2 style="margin:0;">Formation académique</h2>
+          <button id="add-edu-btn" class="btn">+ Formation</button>
+        </div>
+        <div id="edu-editor"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="toast" class="toast">Sauvegardé dans data/data.json</div>
+
+  <script>
+    const DEFAULT_CATEGORIES = [
+      'Prise de son & Mixage',
+      'Sound Design & Composition',
+      'Acoustique & Hardware DIY',
+      'Développement Audio'
+    ];
+
+    let state = { categories: [...DEFAULT_CATEGORIES], profile: { links: {}, skills: [], education: [] }, projects: [] };
+    let selectedIndex = 0;
+
+    async function load() {
+      const res = await fetch('/api/data');
+      state = await res.json();
+      state.categories = Array.isArray(state.categories) && state.categories.length
+        ? state.categories
+        : [...DEFAULT_CATEGORIES];
+      state.profile = state.profile || {};
+      state.profile.links = state.profile.links || {};
+      state.profile.skills = state.profile.skills || [];
+      state.profile.education = state.profile.education || [];
+      state.projects = state.projects || [];
+
+      renderCategories();
+      renderProfile();
+      renderProjectList();
+      renderProjectEditor();
+    }
+
+    async function uploadFile(file, type) {
+      const fd = new FormData();
+      fd.append('file', file);
+      fd.append('type', type);
+      const res = await fetch('/api/upload', { method: 'POST', body: fd });
+      const json = await res.json();
+      if (!res.ok) throw new Error(json.error || 'Erreur upload');
+      return json.path;
+    }
+
+    function setupDropzone(el, type, accept, onUploaded) {
+      el.addEventListener('click', () => {
+        const input = document.createElement('input');
+        input.type = 'file';
+        input.accept = accept;
+        input.onchange = async () => {
+          if (input.files[0]) onUploaded(await uploadFile(input.files[0], type));
+        };
+        input.click();
+      });
+      el.addEventListener('dragover', (e) => { e.preventDefault(); el.classList.add('dragover'); });
+      el.addEventListener('dragleave', () => el.classList.remove('dragover'));
+      el.addEventListener('drop', async (e) => {
+        e.preventDefault();
+        el.classList.remove('dragover');
+        if (e.dataTransfer.files[0]) onUploaded(await uploadFile(e.dataTransfer.files[0], type));
+      });
+    }
+
+    // Navigation par onglets
+    document.querySelectorAll('.tab-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        ['projects', 'categories', 'profile'].forEach((t) => {
+          document.getElementById('tab-' + t).classList.toggle('hidden', btn.dataset.tab !== t);
+        });
+      });
+    });
+
+    // Sauvegarde globale
+    document.getElementById('save-all-btn').addEventListener('click', async () => {
+      syncProfileFromInputs();
+      const res = await fetch('/api/data', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(state)
+      });
+      if (res.ok) showToast('Sauvegardé dans data/data.json');
+    });
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.style.display = 'block';
+      setTimeout(() => (t.style.display = 'none'), 2200);
+    }
+
+    // --- GESTION DES CATÉGORIES PERSONNALISÉES ---
+    function renderCategories() {
+      const el = document.getElementById('categories-editor');
+      el.innerHTML = state.categories.map((cat, i) => {
+        const count = state.projects.filter((p) => p.category === cat).length;
+        return `
+          <div class="row-item">
+            <input type="text" value="${esc(cat)}" onchange="renameCategory(${i}, this.value)" />
+            <span style="font-size:0.8rem;color:var(--muted);min-width:80px;text-align:center;">${count} projet(s)</span>
+            <div class="mini-btns">
+              <button title="Monter" onclick="moveCategory(${i}, -1)">&uarr;</button>
+              <button title="Descendre" onclick="moveCategory(${i}, 1)">&darr;</button>
+              <button title="Supprimer" style="color:var(--danger)" onclick="deleteCategory(${i})">&times;</button>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function addCategory() {
+      const input = document.getElementById('new-category-input');
+      const name = input.value.trim();
+      if (!name || state.categories.includes(name)) return;
+      state.categories.push(name);
+      input.value = '';
+      renderCategories();
+      renderProjectEditor();
+      showToast(`Catégorie "${name}" ajoutée`);
+    }
+
+    document.getElementById('add-category-btn').addEventListener('click', addCategory);
+    document.getElementById('new-category-input').addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') addCategory();
+    });
+
+    function renameCategory(i, newName) {
+      const trimmed = newName.trim();
+      if (!trimmed) { renderCategories(); return; }
+      const oldName = state.categories[i];
+      state.categories[i] = trimmed;
+      // Met à jour automatiquement les projets utilisant l'ancien nom
+      state.projects.forEach((p) => {
+        if (p.category === oldName) p.category = trimmed;
+      });
+      renderCategories();
+      renderProjectList();
+      renderProjectEditor();
+    }
+
+    function moveCategory(i, dir) {
+      const target = i + dir;
+      if (target < 0 || target >= state.categories.length) return;
+      [state.categories[i], state.categories[target]] = [state.categories[target], state.categories[i]];
+      renderCategories();
+      renderProjectEditor();
+    }
+
+    function deleteCategory(i) {
+      const cat = state.categories[i];
+      if (!confirm(`Supprimer la catégorie "${cat}" ?`)) return;
+      state.categories.splice(i, 1);
+      renderCategories();
+      renderProjectEditor();
+    }
+
+    // --- PROFIL ---
+    function renderProfile() {
+      const p = state.profile;
+      document.getElementById('prof-name').value = p.name || '';
+      document.getElementById('prof-tagline').value = p.tagline || '';
+      document.getElementById('prof-email').value = p.email || '';
+      document.getElementById('prof-bio').value = p.bio || '';
+      document.getElementById('prof-github').value = p.links.github || '';
+      document.getElementById('prof-soundcloud').value = p.links.soundcloud || '';
+      document.getElementById('prof-youtube').value = p.links.youtube || '';
+      document.getElementById('cv-status').textContent = p.cv_path ? `Actuel : ${p.cv_path}` : 'Aucun CV';
+
+      document.getElementById('skills-editor').innerHTML = p.skills.map((s, i) => `
+        <div class="row-item">
+          <input type="text" placeholder="Catégorie" value="${esc(s.category)}" onchange="state.profile.skills[${i}].category=this.value" style="max-width:240px;" />
+          <input type="text" placeholder="Items séparés par des virgules" value="${esc((s.items||[]).join(', '))}" onchange="state.profile.skills[${i}].items=this.value.split(',').map(x=>x.trim()).filter(Boolean)" />
+          <button class="btn btn-danger" onclick="state.profile.skills.splice(${i},1);renderProfile()">&times;</button>
+        </div>
+      `).join('');
+
+      document.getElementById('edu-editor').innerHTML = p.education.map((e, i) => `
+        <div class="row-item">
+          <input type="text" placeholder="Année" value="${esc(e.year)}" onchange="state.profile.education[${i}].year=this.value" style="max-width:130px;" />
+          <input type="text" placeholder="Diplôme / Formation" value="${esc(e.title)}" onchange="state.profile.education[${i}].title=this.value" />
+          <input type="text" placeholder="Établissement" value="${esc(e.school)}" onchange="state.profile.education[${i}].school=this.value" />
+          <button class="btn btn-danger" onclick="state.profile.education.splice(${i},1);renderProfile()">&times;</button>
+        </div>
+      `).join('');
+    }
+
+    function syncProfileFromInputs() {
+      const p = state.profile;
+      p.name = document.getElementById('prof-name').value;
+      p.tagline = document.getElementById('prof-tagline').value;
+      p.email = document.getElementById('prof-email').value;
+      p.bio = document.getElementById('prof-bio').value;
+      p.links.github = document.getElementById('prof-github').value;
+      p.links.soundcloud = document.getElementById('prof-soundcloud').value;
+      p.links.youtube = document.getElementById('prof-youtube').value;
+    }
+
+    document.getElementById('add-skill-btn').addEventListener('click', () => {
+      state.profile.skills.push({ category: 'Nouvelle catégorie', items: [] });
+      renderProfile();
+    });
+    document.getElementById('add-edu-btn').addEventListener('click', () => {
+      state.profile.education.push({ year: '2026', title: '', school: '' });
+      renderProfile();
+    });
+    setupDropzone(document.getElementById('dz-cv'), 'cv', '.pdf', (path) => {
+      state.profile.cv_path = path;
+      renderProfile();
+      showToast('CV uploadé');
+    });
+
+    // --- PROJETS ---
+    document.getElementById('add-project-btn').addEventListener('click', () => {
+      state.projects.unshift({
+        id: 'projet-' + Date.now(),
+        title: 'Nouveau projet',
+        featured: false,
+        date: String(new Date().getFullYear()),
+        context_type: 'Projet personnel',
+        category: state.categories[0] || '',
+        role: '',
+        cover_image: '',
+        audio_final: '',
+        audio_raw: '',
+        audio_specs: 'WAV 24-bit / 48 kHz',
+        video_url: '',
+        specifications: '',
+        technical_choices: '',
+        critical_review: '',
+        gallery: []
+      });
+      selectedIndex = 0;
+      renderCategories();
+      renderProjectList();
+      renderProjectEditor();
+    });
+
+    function renderProjectList() {
+      const list = document.getElementById('project-list');
+      list.innerHTML = state.projects.map((p, i) => `
+        <div class="project-item ${i === selectedIndex ? 'active' : ''}" onclick="selectedIndex=${i};renderProjectList();renderProjectEditor()">
+          <div style="min-width:0;">
+            <div style="font-weight:600;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;">${esc(p.title || 'Sans titre')}</div>
+            <div style="font-size:0.75rem;color:var(--muted);">${p.featured ? '★ Phare • ' : ''}${esc(p.category)}</div>
+          </div>
+          <div class="mini-btns" onclick="event.stopPropagation()">
+            <button title="Monter" onclick="moveProject(${i}, -1)">&uarr;</button>
+            <button title="Descendre" onclick="moveProject(${i}, 1)">&darr;</button>
+            <button title="Supprimer" style="color:var(--danger)" onclick="deleteProject(${i})">&times;</button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function moveProject(i, dir) {
+      const target = i + dir;
+      if (target < 0 || target >= state.projects.length) return;
+      [state.projects[i], state.projects[target]] = [state.projects[target], state.projects[i]];
+      selectedIndex = target;
+      renderProjectList();
+      renderProjectEditor();
+    }
+
+    function deleteProject(i) {
+      if (!confirm('Supprimer ce projet ?')) return;
+      state.projects.splice(i, 1);
+      selectedIndex = Math.max(0, selectedIndex - 1);
+      renderCategories();
+      renderProjectList();
+      renderProjectEditor();
+    }
+
+    function renderProjectEditor() {
+      const ed = document.getElementById('project-editor');
+      const p = state.projects[selectedIndex];
+      if (!p) { ed.innerHTML = '<p style="color:var(--muted)">Ajoutez un projet pour commencer.</p>'; return; }
+      p.gallery = p.gallery || [];
+
+      const catOptions = state.categories.includes(p.category) || !p.category
+        ? state.categories
+        : [p.category, ...state.categories];
+
+      ed.innerHTML = `
+        <h2>Édition du projet</h2>
+        <div class="grid-2">
+          <div><label>Titre</label><input type="text" value="${esc(p.title)}" oninput="updateProj('title', this.value, true)" /></div>
+          <div><label>ID (URL #projet/...)</label><input type="text" value="${esc(p.id)}" oninput="updateProj('id', this.value)" /></div>
+          <div>
+            <label>Catégorie</label>
+            <select onchange="updateProj('category', this.value, true); renderCategories();">
+              ${catOptions.map(c => `<option value="${esc(c)}" ${p.category === c ? 'selected' : ''}>${esc(c)}</option>`).join('')}
+            </select>
+          </div>
+          <div><label>Rôle exact</label><input type="text" value="${esc(p.role)}" oninput="updateProj('role', this.value)" /></div>
+          <div><label>Date</label><input type="text" value="${esc(p.date)}" oninput="updateProj('date', this.value)" /></div>
+          <div><label>Cadre (Projet d'étude, Personnel, Commande...)</label><input type="text" value="${esc(p.context_type)}" oninput="updateProj('context_type', this.value)" /></div>
+        </div>
+
+        <label style="display:flex;align-items:center;gap:8px;margin-bottom:16px;color:var(--text);cursor:pointer;">
+          <input type="checkbox" ${p.featured ? 'checked' : ''} onchange="updateProj('featured', this.checked, true)" />
+          Afficher dans les "Projets Phares" sur l'accueil
+        </label>
+
+        <div class="grid-2">
+          <div>
+            <label>Image de couverture (${esc(p.cover_image || 'aucune')})</label>
+            ${p.cover_image ? `<img class="preview-img" src="/${esc(p.cover_image)}" />` : ''}
+            <div class="dropzone" id="dz-cover">Glisser-déposer une image ou cliquer</div>
+          </div>
+          <div>
+            <label>Spécifications audio (ex: WAV 24-bit / 48 kHz)</label>
+            <input type="text" value="${esc(p.audio_specs)}" oninput="updateProj('audio_specs', this.value)" />
+            <label>URL Vidéo (YouTube ou chemin local)</label>
+            <input type="text" value="${esc(p.video_url)}" oninput="updateProj('video_url', this.value)" />
+          </div>
+        </div>
+
+        <div class="grid-2">
+          <div>
+            <label>Piste Audio Finale / Traitée (${esc(p.audio_final || 'aucune')})</label>
+            ${p.audio_final ? `<audio controls src="/${esc(p.audio_final)}" style="width:100%;margin-bottom:8px;"></audio>` : ''}
+            <div class="dropzone" id="dz-audio-final">Uploader audio final (.wav, .flac, .mp3)</div>
+          </div>
+          <div>
+            <label>Piste Audio Brute pour A/B (optionnel : ${esc(p.audio_raw || 'aucune')})</label>
+            ${p.audio_raw ? `<audio controls src="/${esc(p.audio_raw)}" style="width:100%;margin-bottom:8px;"></audio>` : ''}
+            <div class="dropzone" id="dz-audio-raw">Uploader audio brut (.wav, .flac, .mp3)</div>
+          </div>
+        </div>
+
+        <label>Contexte & Cahier des charges</label>
+        <textarea oninput="updateProj('specifications', this.value)">${esc(p.specifications)}</textarea>
+
+        <label>Démarche & Choix techniques</label>
+        <textarea oninput="updateProj('technical_choices', this.value)">${esc(p.technical_choices)}</textarea>
+
+        <label>Bilan critique & Améliorations</label>
+        <textarea oninput="updateProj('critical_review', this.value)">${esc(p.critical_review)}</textarea>
+
+        <h2 style="margin-top:10px;">Galerie technique (schémas, mesures, photos)</h2>
+        <div class="dropzone" id="dz-gallery">+ Glisser-déposer une image pour l'ajouter à la galerie</div>
+        <div>
+          ${p.gallery.map((g, gi) => `
+            <div class="row-item">
+              <img src="/${esc(g.image)}" style="width:56px;height:38px;object-fit:cover;border-radius:4px;" />
+              <input type="text" placeholder="Légende technique" value="${esc(g.caption)}" onchange="state.projects[${selectedIndex}].gallery[${gi}].caption=this.value" />
+              <button class="btn btn-danger" onclick="state.projects[${selectedIndex}].gallery.splice(${gi},1);renderProjectEditor()">&times;</button>
+            </div>
+          `).join('')}
+        </div>
+      `;
+
+      setupDropzone(document.getElementById('dz-cover'), 'image', 'image/*', (path) => {
+        p.cover_image = path; renderProjectEditor(); showToast('Image uploadée');
+      });
+      setupDropzone(document.getElementById('dz-audio-final'), 'audio', 'audio/*', (path) => {
+        p.audio_final = path; renderProjectEditor(); showToast('Audio final uploadé');
+      });
+      setupDropzone(document.getElementById('dz-audio-raw'), 'audio', 'audio/*', (path) => {
+        p.audio_raw = path; renderProjectEditor(); showToast('Audio brut uploadé');
+      });
+      setupDropzone(document.getElementById('dz-gallery'), 'image', 'image/*', (path) => {
+        p.gallery.push({ image: path, caption: '' }); renderProjectEditor(); showToast('Image ajoutée à la galerie');
+      });
+    }
+
+    function updateProj(key, value, refreshList = false) {
+      state.projects[selectedIndex][key] = value;
+      if (refreshList) renderProjectList();
+    }
+
+    function esc(s) {
+      return String(s ?? '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+
+    load();
+  </script>
+</body>
+</html>

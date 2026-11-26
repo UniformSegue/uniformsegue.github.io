@@ -1,0 +1,220 @@
+{
+  "categories": [
+    "Prise de son & Mixage",
+    "Sound Design & Composition",
+    "Acoustique & Hardware DIY",
+    "Développement Audio",
+    "Desgin Visuelle"
+  ],
+  "profile": {
+    "bio": "Étudiant en sciences appliquées et acoustique et autodidacte dans la production et le mixage musical, je cherche a me réorienté dans les technique du son et l'audio-visuels.",
+    "cv_path": "assets/cv.pdf",
+    "education": [
+      {
+        "school": "ENSIM",
+        "title": "Cycle Préparatoire ENSIM Acoustique - L2 Physique CHIMIE",
+        "year": "2024 - 2026"
+      },
+      {
+        "school": "Lycée Berthollet",
+        "title": "Baccalauréat Mention Bien - Lycée Berthollet",
+        "year": "2024"
+      }
+    ],
+    "email": "maxence.roger74@gmail.com",
+    "links": {
+      "github": "https://github.com/UniformSegue",
+      "soundcloud": "https://soundcloud.com/uniform_segue",
+      "youtube": "https://www.youtube.com/@UniformSegueBeat"
+    },
+    "name": "Maxence ROGER",
+    "skills": [
+      {
+        "category": "DAW Et composotion Musical",
+        "items": [
+          "Reaper",
+          "Ableton",
+          "Fl Studio",
+          "Guitare Pro",
+          "Muse"
+        ]
+      },
+      {
+        "category": "Acoustique & Électronique",
+        "items": [
+          "KiCad",
+          "ESP32",
+          "Apprentissage Pédales DIY",
+          "Construction Sound System DUB"
+        ]
+      },
+      {
+        "category": "Programmation",
+        "items": [
+          "C++",
+          "Python",
+          "JavaScript",
+          "Linux Utilisation de Debian Server",
+          "Ubuntu et Pop os au quotidien"
+        ]
+      }
+    ],
+    "tagline": "Ingénierie Sonore, Acoustique & Développement Audio"
+  },
+  "projects": [
+    {
+      "id": "projet-1795626404573",
+      "title": "Don't listen to your head, listen to your hearth",
+      "featured": false,
+      "date": "2026",
+      "context_type": "Projet personnel",
+      "category": "Sound Design & Composition",
+      "role": "Composition d'un single",
+      "cover_image": "assets/images/song1.jpg",
+      "audio_final": "assets/audio/Dont_listen_to_your_head_listen_to_your_heart.mp3",
+      "audio_raw": "",
+      "audio_specs": "WAV 24-bit / 48 kHz",
+      "video_url": "",
+      "specifications": "Ce single apporte un côté mélancolique plus joyeux que les autres, une sorte de message d'espoir via le titre, la cover, mais aussi le son en lui-même.",
+      "technical_choices": "Ce son a pour base une rythmique techno, mais avec des sonorités synthwave dans les synthés qui apportent ce côté mélancolique mais joyeux, porté sur l'avenir.\nLa gamme est mineure, ce qui garde cette ambiance triste, mais avec une suite d'accords plus heureuse.",
+      "critical_review": "Le mixage des drums n'est pas très convaincant et les laisse en retrait sans vraiment bien les intégrer au son. Un compresseur et un limiteur rajouteraient au kick et à la snare de la chaleur, ce qui les rendrait plus imprégnés dans le son.",
+      "gallery": [
+        {
+          "image": "assets/images/song1.jpg",
+          "caption": "Cover"
+        }
+      ]
+    },
+    {
+      "id": "projet-1795625575696",
+      "title": "Look now i can fly",
+      "featured": false,
+      "date": "2026",
+      "context_type": "Projet personnel",
+      "category": "Sound Design & Composition",
+      "role": "Composition d'un single",
+      "cover_image": "assets/images/look_now_i_can_fly.jpg",
+      "audio_final": "assets/audio/Look_now_i_can_fly.mp3",
+      "audio_raw": "",
+      "audio_specs": "WAV 24-bit / 48 kHz",
+      "video_url": "",
+      "specifications": "La démarche derrière ce son est une volonté de faire un morceau nerveux dans les drums, qui apporte quand même cette sensation de vol et une ambiance très planante.",
+      "technical_choices": "Toujours en partant d'une base techno avec le fameux kick et des drums très rapides et nerveux, la mélodie apporte un contraste fort avec des voix donnant cette sensation de voler. Le piano et la guitare imposent cette mélodie très calme qui dénature les drums, lesquels se veulent beaucoup plus violents.\nEn deuxième partie, un synthé acid vient rajouter ce côté spirituel et très mental.\nLa gamme choisie est mineure pour apporter cette sensation triste et mélancolique.",
+      "critical_review": "L'implémentation des voix est très bien dans le son, mais leur arrivée est un peu brouillonne et apporte une rupture peut-être trop violente avec l'ambiance du morceau. Leur arrivée serait à retravailler, par exemple via un SFX de voix en reverse pour amener une sorte de montée, ou simplement un filtre passe-haut qui augmenterait via une automation moins marquée.",
+      "gallery": [
+        {
+          "image": "assets/images/look_now_i_can_fly.jpg",
+          "caption": "Cover"
+        }
+      ]
+    },
+    {
+      "id": "projet-1795625247060",
+      "title": "Is that Dub ?",
+      "featured": false,
+      "date": "2026",
+      "context_type": "Projet personnel",
+      "category": "Sound Design & Composition",
+      "role": "Composition d'un single",
+      "cover_image": "assets/images/is_that_dub.jpg",
+      "audio_final": "assets/audio/Is_that_dub.mp3",
+      "audio_raw": "",
+      "audio_specs": "WAV 24-bit / 48 kHz",
+      "video_url": "",
+      "specifications": "Après la découverte du dub et une fascination pour ce genre, j'ai voulu apprendre à composer ce genre de sonorités.",
+      "technical_choices": "La base repose sur des trompettes et une guitare sur les contretemps, les fameux skanks joués sur les contretemps. Une mélodie vient se rajouter au piano pour donner du volume au son et une sorte de continuité. Mais le dub ne serait que du reggae sans une basse typique du dub, jouée lentement, très lourde et très longue.",
+      "critical_review": "Le mixage de la basse est assez hasardeux, dû notamment à mon setup de mixage encore très limité : elle sonne donc très bien au casque, mais a des difficultés à exister sur des enceintes.",
+      "gallery": [
+        {
+          "image": "assets/images/is_that_dub.jpg",
+          "caption": "Cover"
+        }
+      ]
+    },
+    {
+      "id": "projet-1795624704755",
+      "title": "Do you see that guy ?",
+      "featured": false,
+      "date": "2026",
+      "context_type": "Projet personnel",
+      "category": "Sound Design & Composition",
+      "role": "Composition d'un single",
+      "cover_image": "assets/images/Do_you_see_that_guy.png",
+      "audio_final": "assets/audio/Do_you_see_that_guy.mp3",
+      "audio_raw": "",
+      "audio_specs": "WAV 24-bit / 48 kHz",
+      "video_url": "",
+      "specifications": "Le but était de créer un premier son techno reprenant les codes de l'acid pour la mélodie.",
+      "technical_choices": "Le son est d'abord composé comme de la techno avec un kick sur tous les temps, auquel j'ai rajouté des éléments d'acid avec un lead synth typique de l'acid. J'ai rajouté une guitare en arpège vague pour donner cette sensation de montée-descente dans l'accompagnement, et j'ai rajouté des voix pour le sound design final.",
+      "critical_review": "Le mixage n'est pas parfait, les kicks sont un peu faibles et pourraient mieux ressortir. L'un des principaux problèmes est que mon mixage se limite uniquement au casque, n'ayant pas encore d'enceintes qualitatives permettant d'avoir une autre perception du son.",
+      "gallery": [
+        {
+          "image": "assets/images/Do_you_see_that_guy.png",
+          "caption": "Cover"
+        }
+      ]
+    },
+    {
+      "id": "projet-1795624149302",
+      "title": "Cover des mes Singles",
+      "featured": false,
+      "date": "2026",
+      "context_type": "Projet personnel",
+      "category": "Desgin Visuelle",
+      "role": "Design des cover des mes Singles",
+      "cover_image": "assets/images/song1.jpg",
+      "audio_final": "",
+      "audio_raw": "",
+      "audio_specs": "",
+      "video_url": "",
+      "specifications": "Apres la composition de quelques singles que j'ai composer, pour pouvoir les publier avec un minimum de credibiliter j'ai realiser plusieurs cover vial de logiciel  Procreate.",
+      "technical_choices": "Les différentes covers ont une DA avec un style aquarelle peinte, permettant de représenter le titre et le mood du son en représentant toujours le personnage d'Uniform, qui représente l'artiste derrière les différentes musiques.",
+      "critical_review": "Je n'ai pas de grandes notions en peinture, dessin et design, et les palettes de couleurs sont choisies arbitrairement. Un retravail des couleurs pourrait être envisagé.",
+      "gallery": [
+        {
+          "image": "assets/images/song1.jpg",
+          "caption": ""
+        },
+        {
+          "image": "assets/images/song3.png",
+          "caption": ""
+        },
+        {
+          "image": "assets/images/song4.jpg",
+          "caption": ""
+        },
+        {
+          "image": "assets/images/look_now_i_can_fly.jpg",
+          "caption": ""
+        }
+      ]
+    },
+    {
+      "audio_final": "",
+      "audio_raw": "",
+      "audio_specs": "none",
+      "category": "Acoustique & Hardware DIY",
+      "context_type": "Projet personnel à devenir professionels",
+      "cover_image": "assets/images/obisidian.png",
+      "critical_review": "Pour l'instant, le sound system et le collectif n'ont même pas de nom... Nous en sommes au début et il y a beaucoup d'améliorations possibles, rien que sur le choix des amplis. Le but du projet est de constamment évoluer et non de rester figé avec un hardware qui ne change jamais. Ce projet n'est qu'à son démarrage et annonce de beaux jours !",
+      "date": "2026",
+      "featured": true,
+      "gallery": [
+        {
+          "caption": "Schéma du processeur",
+          "image": "assets/images/processeurobsi.png"
+        },
+        {
+          "caption": "Recherche à faire",
+          "image": "assets/images/recherchesound.png"
+        }
+      ],
+      "id": "projet-1795622730672",
+      "role": "conception d'un Sound System DUB",
+      "specifications": "Depuis trois ans, je suis passionnée par le monde des sound systems techno, par la musique électronique et, depuis peu, par la musique jamaïcaine, notamment le dub. Avec plusieurs amis, nous avons commencé la création d'un sound system orienté dub.",
+      "technical_choices": "Pour l'instant, nous en sommes à la partie conception. Cela passe par la recherche des caissons à utiliser pour les tweeters, les mids, les kicks et surtout les basses avec des scoops, ce qui le rend d'office orienté dub. Mais pas seulement ! Il y a aussi toutes les recherches concernant les amplis, préamplis, processeurs, le bois, les schémas, l'électronique pour les filtres passifs, la façon de connecter le sound system, de l'alimenter en sécurité, de protéger le matériel et de le rendre le plus performant possible. Ce projet est de longue durée et représente un coût financier important, c'est pourquoi il s'étalera sur plusieurs années et que nous n'en sommes qu'au début !\nToutes les recherches sont synthétisées sur le logiciel Obsidian, ordonnées pour permettre une compréhension claire et détaillée de la future architecture.",
+      "title": "Sound System DUB",
+      "video_url": ""
+    }
+  ]
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio Son & Acoustique</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Navigation principale -->
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#accueil" class="brand" id="nav-brand">PORTFOLIO</a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#accueil" class="nav-link" data-route="accueil">Accueil</a>
+        <a href="#projets" class="nav-link" data-route="projets">Projets</a>
+        <a href="#parcours" class="nav-link" data-route="parcours">Parcours & Compétences</a>
+        <a href="#contact" class="nav-link" data-route="contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Contenu dynamique SPA -->
+  <main id="app" class="container main-content"></main>
+
+  <!-- Modale Lightbox pour les schémas techniques -->
+  <div id="lightbox" class="lightbox hidden" role="dialog" aria-modal="true">
+    <button id="lightbox-close" class="lightbox-close" aria-label="Fermer">&times;</button>
+    <img id="lightbox-img" src="" alt="" />
+    <p id="lightbox-caption" class="mono"></p>
+  </div>
+
+  <!-- Lecteur Audio Persistant (Bottom Bar) -->
+  <aside id="audio-player" class="player-bar hidden" aria-label="Lecteur audio">
+    <div class="player-inner container">
+      <!-- Infos piste -->
+      <div class="player-meta">
+        <button id="player-play-btn" class="play-btn-main" aria-label="Lecture / Pause">
+          <svg id="icon-play" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><polygon points="6,4 20,12 6,20"/></svg>
+          <svg id="icon-pause" class="hidden" viewBox="0 0 24 24" width="20" height="20" fill="currentColor"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+        <div class="player-track-info">
+          <a id="player-title" href="#projets" class="player-title">Aucune piste</a>
+          <div class="player-sub mono">
+            <span id="player-specs">WAV 24-bit / 48 kHz</span>
+            <span id="player-error" class="player-error hidden"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Waveform + Timecode -->
+      <div class="player-center">
+        <span id="player-current-time" class="mono timecode">00:00</span>
+        <div class="waveform-wrap" id="waveform-wrap" title="Cliquer pour naviguer">
+          <canvas id="waveform-canvas" width="600" height="44"></canvas>
+        </div>
+        <span id="player-duration" class="mono timecode">00:00</span>
+      </div>
+
+      <!-- Contrôles A/B + Volume -->
+      <div class="player-controls">
+        <div id="ab-switch-group" class="ab-switch hidden" title="Comparaison instantanée au même timecode">
+          <button id="btn-mode-final" class="ab-btn active mono" data-mode="final">TRAITÉ</button>
+          <button id="btn-mode-raw" class="ab-btn mono" data-mode="raw">BRUT</button>
+        </div>
+
+        <div class="volume-wrap">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+            <path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+          </svg>
+          <input id="player-volume" type="range" min="0" max="1" step="0.01" value="0.9" aria-label="Volume" />
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <script src="js/player.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
