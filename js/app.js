@@ -419,4 +419,25 @@ function escapeHtml(str) {
     .replace(/'/g, '&#39;');
 }
 
+// Menu mobile
+document.addEventListener('DOMContentLoaded', () => {
+  const btn = document.getElementById('mobile-menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  if (!btn || !menu) return;
+
+  btn.addEventListener('click', () => {
+    const isHidden = menu.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isHidden));
+    btn.textContent = isHidden ? 'MENU ☰' : 'FERMER ✕';
+  });
+
+  menu.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.textContent = 'MENU ☰';
+    });
+  });
+});
+
 init();

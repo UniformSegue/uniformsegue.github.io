@@ -838,3 +838,29 @@ a {
   border-radius: 999px;
   flex-shrink: 0;
 }
+
+@media (max-width: 768px) {
+  header,
+  header nav {
+    height: auto !important;
+    min-height: 60px;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.6rem !important;
+    padding: 0.75rem 1rem !important;
+  }
+
+  header nav ul,
+  header .nav-links {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    justify-content: center !important;
+    gap: 0.5rem 1rem !important;
+  }
+
+  /* Évite que le header plus haut ne cache le début de la page */
+  main {
+    padding-top: 7.5rem !important;
+  }
+}
