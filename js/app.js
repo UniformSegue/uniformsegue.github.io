@@ -261,12 +261,12 @@ function renderProjectDetail(id) {
 
     <div class="detail-sections">
       <section class="detail-block">
-        <h2>Contexte & Cahier des charges</h2>
+        <h2>Contexte</h2>
         <p>${escapeHtml(p.specifications)}</p>
       </section>
 
       <section class="detail-block">
-        <h2>Démarche & Choix techniques</h2>
+        <h2>Démarche</h2>
         <p>${escapeHtml(p.technical_choices)}</p>
       </section>
 
@@ -293,7 +293,7 @@ function renderProjectDetail(id) {
       }
 
       <section class="detail-block">
-        <h2>Bilan critique & Améliorations</h2>
+        <h2>Bilan & Améliorations</h2>
         <p>${escapeHtml(p.critical_review)}</p>
       </section>
     </div>
