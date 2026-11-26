@@ -207,7 +207,7 @@
       "cover_image": "assets/images/song1.jpg",
       "critical_review": "Le mixage des drums n'est pas très convaincant et les laisse en retrait sans vraiment bien les intégrer au son. Un compresseur et un limiteur rajouteraient au kick et à la snare de la chaleur, ce qui les rendrait plus imprégnés dans le son.",
       "date": "2026",
-      "featured": true,
+      "featured": false,
       "gallery": [
         {
           "caption": "Cover",
