@@ -11,36 +11,15 @@
 </head>
 <body>
   <!-- Navigation principale -->
-  <!-- Navigation fixe responsive -->
-  <header class="fixed top-0 inset-x-0 z-40 backdrop-blur-md bg-void/90 border-b border-border">
-    <nav class="max-w-6xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
-      <a href="#hero" id="nav-logo" class="font-mono font-bold text-sm tracking-widest text-neonCyan uppercase truncate">
-        SYS.INIT //
-      </a>
-
-      <!-- Liens Desktop -->
-      <div class="hidden md:flex items-center gap-6 font-mono text-xs uppercase tracking-wider text-zinc-400 shrink-0">
-        <a href="#audio" class="hover:text-neonCyan transition-colors">01.Prods</a>
-        <a href="#videos" class="hover:text-neonCyan transition-colors">02.AMV</a>
-        <a href="#instruments" class="hover:text-neonCyan transition-colors">03.Instruments</a>
-        <a href="#projects" class="hover:text-neonPurple transition-colors">04.Hardware</a>
-      </div>
-
-      <!-- Bouton Menu Mobile -->
-      <button id="mobile-menu-btn" aria-label="Ouvrir le menu" aria-expanded="false"
-        class="md:hidden shrink-0 px-3 py-1.5 rounded-lg bg-panel border border-border hover:border-neonCyan font-mono text-xs text-neonCyan uppercase">
-        MENU ☰
-      </button>
-    </nav>
-
-    <!-- Menu déroulant Mobile -->
-    <div id="mobile-menu" class="hidden md:hidden border-t border-border bg-void/95 backdrop-blur-md px-4 py-4">
-      <div class="flex flex-col gap-3 font-mono text-xs uppercase tracking-wider text-zinc-300">
-        <a href="#audio" class="mobile-nav-link py-2 border-b border-border/50 hover:text-neonCyan">01.Prods</a>
-        <a href="#videos" class="mobile-nav-link py-2 border-b border-border/50 hover:text-neonCyan">02.AMV</a>
-        <a href="#instruments" class="mobile-nav-link py-2 border-b border-border/50 hover:text-neonCyan">03.Instruments</a>
-        <a href="#projects" class="mobile-nav-link py-2 hover:text-neonPurple">04.Hardware</a>
-      </div>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#accueil" class="brand" id="nav-brand">PORTFOLIO</a>
+      <nav class="nav-links" aria-label="Navigation principale">
+        <a href="#accueil" class="nav-link" data-route="accueil">Accueil</a>
+        <a href="#projets" class="nav-link" data-route="projets">Projets</a>
+        <a href="#parcours" class="nav-link" data-route="parcours">Parcours & Compétences</a>
+        <a href="#contact" class="nav-link" data-route="contact">Contact</a>
+      </nav>
     </div>
   </header>
 
