@@ -1,4 +1,9 @@
 {
+  "background": {
+    "blur": 14,
+    "image": "assets/images/bg.jpg",
+    "opacity": 0.35
+  },
   "categories": [
     "Prise de son & Mixage",
     "Sound Design & Composition",
@@ -63,6 +68,29 @@
     "tagline": "Ingénierie Sonore, Acoustique & Développement Audio"
   },
   "projects": [
+    {
+      "id": "projet-1795717902707",
+      "title": "Who the F*ck Is Lil Peep",
+      "featured": true,
+      "date": "2024",
+      "context_type": "Projet étudiant",
+      "category": "Sound Design & Composition",
+      "role": "Première Création avec Ableton",
+      "cover_image": "assets/images/bg.jpg",
+      "audio_final": "assets/audio/WhoTheFuckIsLilPeep.mp3",
+      "audio_raw": "",
+      "audio_specs": "WAV 24-bit / 48 kHz",
+      "video_url": "https://youtu.be/lzpE3GRjevA",
+      "specifications": "Lors d'un cours d'initiation à Ableton, j'ai dû réaliser un morceau à partir du thème « Ensemble ».\nJ'ai pu apprendre à utiliser le logiciel Ableton après avoir passé 5 ans sur FL Studio, et le changement fut très rapide et plaisant. Aujourd'hui, il est mon logiciel le plus utilisé.",
+      "technical_choices": "J'ai choisi de représenter le thème « Ensemble » via le mashup de 2 musiques qui me tiennent à cœur. Le sample mélodie est No Buses - Arctic Monkeys et la voix Life is Beautiful - Lil Peep.\nLa musique avait pour DA du cloud rap.\nJ'ai rajouté des effets sur la voix pour la rendre très floue et secondaire, comme un accompagnement. Les drums ont une réverbe les rendant plus longs et plus flottants.\nLa deuxième partie prend la voix et l'utilise en sample unique.\nDes Sound Effects sont aussi utilisés pour les transitions, ainsi que des breaks pour les drums.\n\nJ'ai aussi réalisé un AMV YouTube, utilisant des images de Cyberpunk: Edgerunners que je trouvais parfaitement adaptées.\nLes passages de la musique sont liés à ce qu'il se passe à l'image.",
+      "critical_review": "Il n'y a pas de bassline par choix artistique. Je voulais qu'elle soit planante au point de supprimer tous les instruments lourds, soit les basses.\nMais lors de l'écoute, elle manque, et si la musique devait plus correspondre aux codes d'écoute traditionnels, une basse serait un bon ajout.",
+      "gallery": [
+        {
+          "image": "assets/images/bg.jpg",
+          "caption": "Miniature de l'AMV"
+        }
+      ]
+    },
     {
       "audio_final": "",
       "audio_raw": "",
@@ -207,7 +235,7 @@
       "cover_image": "assets/images/song1.jpg",
       "critical_review": "Le mixage des drums n'est pas très convaincant et les laisse en retrait sans vraiment bien les intégrer au son. Un compresseur et un limiteur rajouteraient au kick et à la snare de la chaleur, ce qui les rendrait plus imprégnés dans le son.",
       "date": "2026",
-      "featured": false,
+      "featured": true,
       "gallery": [
         {
           "caption": "Cover",
