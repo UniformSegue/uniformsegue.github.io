@@ -274,7 +274,7 @@ function renderProjectDetail(id) {
         p.gallery && p.gallery.length
           ? `
         <section class="detail-block">
-          <h2>Galerie technique (Schémas, Mesures & Montage)</h2>
+          <h2>Galerie</h2>
           <div class="gallery-grid">
             ${p.gallery
               .map(

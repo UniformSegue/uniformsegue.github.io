@@ -81,6 +81,10 @@
         {
           "caption": "Recherche à faire",
           "image": "assets/images/recherchesound.png"
+        },
+        {
+          "caption": "Cablages",
+          "image": "assets/images/image_2026-11-26_184443737.png"
         }
       ],
       "id": "projet-1795622730672",
@@ -102,36 +106,36 @@
       "featured": true,
       "gallery": [
         {
-          "image": "assets/images/face_arriere_devant_propre.jpg",
-          "caption": "Face arrière"
+          "caption": "Face arrière",
+          "image": "assets/images/face_arriere_devant_propre.jpg"
         },
         {
-          "image": "assets/images/face_avant_devant.jpg",
-          "caption": "Face avant"
+          "caption": "Face avant",
+          "image": "assets/images/face_avant_devant.jpg"
         },
         {
-          "image": "assets/images/manette.jpg",
-          "caption": "Manette"
+          "caption": "Manette",
+          "image": "assets/images/manette.jpg"
         },
         {
-          "image": "assets/images/ocarinahero.png",
-          "caption": "Premiere Maquette"
+          "caption": "Premiere Maquette",
+          "image": "assets/images/ocarinahero.png"
         },
         {
-          "image": "assets/images/maquette.png",
-          "caption": "Schéma Manette"
+          "caption": "Schéma Manette",
+          "image": "assets/images/maquette.png"
         },
         {
-          "image": "assets/images/MenuDepart.png",
-          "caption": "Menu Start"
+          "caption": "Menu Start",
+          "image": "assets/images/MenuDepart.png"
         },
         {
-          "image": "assets/images/debnug_label.png",
-          "caption": "Jeu"
+          "caption": "Jeu",
+          "image": "assets/images/debnug_label.png"
         },
         {
-          "image": "assets/images/dernier_menu.png",
-          "caption": "Menu Fin"
+          "caption": "Menu Fin",
+          "image": "assets/images/dernier_menu.png"
         }
       ],
       "id": "projet-1795712196961",
@@ -142,22 +146,22 @@
       "video_url": ""
     },
     {
-      "id": "projet-1795713552085",
-      "title": "Ocarina Hero Musique",
-      "featured": false,
-      "date": "2025",
-      "context_type": "Projet étudiant",
-      "category": "Sound Design & Composition",
-      "role": "Création remix Ocarina Pour Jeu Vidéo",
-      "cover_image": "assets/images/ableton.png",
       "audio_final": "assets/audio/zeldaremix1.wav",
       "audio_raw": "",
       "audio_specs": "WAV 24-bit / 48 kHz",
-      "video_url": "",
+      "category": "Sound Design & Composition",
+      "context_type": "Projet étudiant",
+      "cover_image": "assets/images/ableton.png",
+      "critical_review": "Le mixage est conçu pour mettre en avant la mélodie et l'accompagnement, et les drums sont très bas par souci de clarté pour le jeu.\nSi la musique devait être indépendante du jeu, j'harmoniserais plus les drums, la basse et la mélodie.",
+      "date": "2025",
+      "featured": false,
+      "gallery": [],
+      "id": "projet-1795713552085",
+      "role": "Création remix Ocarina Pour Jeu Vidéo",
       "specifications": "Mon jeu vidéo Ocarina Hero avait besoin de musique.\nJ'ai alors penser a remixer des musique iconique de l'univers de The Legend Of Zelda.",
       "technical_choices": "J'ai pris la mélodie principale de Song of Storms de Zelda: Ocarina of Time, à laquelle j'ai rajouté une rythmique trap pour rajouter cette ambiance de jeu musical de rythme.",
-      "critical_review": "Le mixage est conçu pour mettre en avant la mélodie et l'accompagnement, et les drums sont très bas par souci de clarté pour le jeu.\nSi la musique devait être indépendante du jeu, j'harmoniserais plus les drums, la basse et la mélodie.",
-      "gallery": []
+      "title": "Ocarina Hero Musique",
+      "video_url": ""
     },
     {
       "audio_final": "",

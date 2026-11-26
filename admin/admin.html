@@ -462,16 +462,16 @@
           </div>
         </div>
 
-        <label>Contexte & Cahier des charges</label>
+        <label>Contexte</label>
         <textarea oninput="updateProj('specifications', this.value)">${esc(p.specifications)}</textarea>
 
-        <label>Démarche & Choix techniques</label>
+        <label>Démarche</label>
         <textarea oninput="updateProj('technical_choices', this.value)">${esc(p.technical_choices)}</textarea>
 
         <label>Bilan critique & Améliorations</label>
         <textarea oninput="updateProj('critical_review', this.value)">${esc(p.critical_review)}</textarea>
 
-        <h2 style="margin-top:10px;">Galerie technique (schémas, mesures, photos)</h2>
+        <h2 style="margin-top:10px;">Galerie</h2>
         <div class="dropzone" id="dz-gallery">+ Glisser-déposer une image pour l'ajouter à la galerie</div>
         <div>
           ${p.gallery.map((g, gi) => `
